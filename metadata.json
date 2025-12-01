@@ -1,0 +1,8 @@
+{
+  "name": "Healing Journey",
+  "description": "A compassionate, gamified tracker for mental health and personal growth based on IFS principles. Features XP progression, daily tracking, and AI-powered compassion assistance.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}
