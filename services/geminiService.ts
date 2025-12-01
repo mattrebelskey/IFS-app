@@ -3,7 +3,7 @@ import { AppState } from "../types";
 
 // Helper to safely get the API key
 const getApiKey = (): string | undefined => {
-  return process.env.API_KEY;
+  return import.meta.env.VITE_GEMINI_API_KEY;
 };
 
 export const generateCompassionMessage = async (state: AppState): Promise<string> => {
