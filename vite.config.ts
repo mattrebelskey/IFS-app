@@ -1,16 +1,14 @@
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    return {
-      plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
-      build: {
-        outDir: 'dist',
-        sourcemap: false
-      }
-    };
+// Vite automatically exposes env vars prefixed with VITE_ to the client
+// For testing: Create a .env file with VITE_GEMINI_API_KEY=your_key
+// For production: Use VITE_API_PROXY_URL to point to your backend proxy
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    outDir: 'dist',
+    sourcemap: false
+  }
 });
