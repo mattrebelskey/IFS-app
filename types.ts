@@ -76,6 +76,9 @@ export interface AppState {
   // Customization
   customBasics?: TaskItem[]; 
   activeTemplate?: string; // Tracks "Standard", "ADHD Support", etc.
+  
+  // Prestige System
+  prestigeLevel?: number;
 }
 
 export const XP_THRESHOLDS = {

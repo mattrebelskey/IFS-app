@@ -27,9 +27,9 @@ export const ADHD_TEMPLATE = {
     { id: 'basic_teeth', text: 'Brushed teeth', category: 'basic', xpValue: 1 },
   ] as TaskItem[],
   focus: [
-    { id: 'focus_timer', text: 'Set a 10min timer for a task', category: 'focus', xpValue: 1 },
-    { id: 'focus_body_double', text: 'Body double (text a friend)', category: 'focus', xpValue: 1 },
-    { id: 'focus_dopamine', text: 'Do one dopamine menu item', category: 'focus', xpValue: 1 },
+    { id: 'focus_timer', text: 'Set a 10min timer for a task', category: 'focus', xpValue: 2 },
+    { id: 'focus_body_double', text: 'Body double (text a friend)', category: 'focus', xpValue: 2 },
+    { id: 'focus_dopamine', text: 'Do one dopamine menu item', category: 'focus', xpValue: 2 },
   ] as TaskItem[]
 };
 
@@ -42,9 +42,9 @@ export const GRIEF_TEMPLATE = {
     { id: 'basic_feel', text: 'Acknowledged a feeling', category: 'basic', xpValue: 1 },
   ] as TaskItem[],
   focus: [
-    { id: 'focus_memory', text: 'Look at a photo I love', category: 'focus', xpValue: 1 },
-    { id: 'focus_no', text: 'Say no to one draining thing', category: 'focus', xpValue: 1 },
-    { id: 'focus_kindness', text: 'One gentle thing for myself', category: 'focus', xpValue: 1 },
+    { id: 'focus_memory', text: 'Look at a photo I love', category: 'focus', xpValue: 2 },
+    { id: 'focus_no', text: 'Say no to one draining thing', category: 'focus', xpValue: 2 },
+    { id: 'focus_kindness', text: 'One gentle thing for myself', category: 'focus', xpValue: 2 },
   ] as TaskItem[]
 };
 
@@ -64,6 +64,10 @@ export const COMPASSION_QUOTES = [
   "It is okay to rest. Rest is productive.",
   "All parts are welcome here.",
   "How do I feel toward this part?",
+  "Small steps lead to big changes.",
+  "I'm proud of myself for showing up today.",
+  "Healing isn't linear, and that's okay.",
+  "Every moment is a chance to begin again.",
 ];
 
 export const LIBRARY_CONTENT = [
@@ -132,7 +136,8 @@ export const INITIAL_STATE: AppState = {
   healthLogs: {},
   habitStacks: [],
   customBasics: DEFAULT_DAILY_BASICS,
-  activeTemplate: "Standard"
+  activeTemplate: "Standard",
+  prestigeLevel: 0
 };
 
 // --- Badge Logic Helpers ---
@@ -231,7 +236,7 @@ export const BADGES: Badge[] = [
     name: 'Curious Explorer',
     description: 'Reached Level 2: Curious',
     icon: '🔭',
-    condition: (state) => state.totalXp > XP_THRESHOLDS[LevelName.SURVIVOR].max
+    condition: (state) => (state.totalXp % 500) > XP_THRESHOLDS[LevelName.SURVIVOR].max
   },
   {
     id: 'streak_3',
@@ -286,5 +291,13 @@ export const BADGES: Badge[] = [
     description: 'Use the app for 10 days',
     icon: '💖',
     condition: (state) => Object.keys(state.dailyHistory).length >= 10
+  },
+  // --- Prestige Badge ---
+  {
+    id: 'first_prestige',
+    name: 'Full Circle',
+    description: 'Completed your first prestige cycle',
+    icon: '⭐',
+    condition: (state) => (state.prestigeLevel || 0) >= 1
   }
 ];
