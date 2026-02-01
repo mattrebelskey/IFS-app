@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Home, 
-  Calendar, 
-  Trophy, 
-  BookOpen, 
+import {
+  Home,
+  Calendar,
+  Trophy,
+  BookOpen,
   Settings as SettingsIcon,
   CheckCircle2,
   Plus,
@@ -14,35 +14,30 @@ import {
   Mic,
   MicOff,
   Camera,
-  Share,
-  Activity,
   Download,
   MessageSquarePlus,
   Sparkles,
   X,
   Edit2,
-  Printer,
   FileText,
   AlertTriangle,
   Info,
   Book,
   Watch,
   GripVertical,
-  Check,
   RefreshCw,
   Star,
   Phone,
   ChevronRight
 } from 'lucide-react';
-import { 
-  AppState, 
-  LevelName, 
-  XP_THRESHOLDS, 
-  WinEntry, 
+import {
+  AppState,
+  LevelName,
+  XP_THRESHOLDS,
+  WinEntry,
   Part,
   PartsCheckIn,
   JournalType,
-  HealthLog,
   Badge,
   TaskItem
 } from './types';
@@ -58,7 +53,7 @@ import {
   LIBRARY_CONTENT
 } from './constants';
 import { saveState, loadState, calculateLevel } from './services/storageService';
-import { generateCompassionMessage, suggestHabitStack, suggestTasks } from './services/geminiService';
+import { generateCompassionMessage, suggestTasks } from './services/geminiService';
 
 // --- HELPER COMPONENTS ---
 
@@ -536,11 +531,8 @@ const App: React.FC = () => {
   const [newPartRole, setNewPartRole] = useState<Part['role']>('unknown');
 
   // Other
-  const [habitSuggestion, setHabitSuggestion] = useState<string | null>(null);
   const [newFocusTask, setNewFocusTask] = useState('');
   const [suggestedTasks, setSuggestedTasks] = useState<string[]>([]);
-  const [showExportMenu, setShowExportMenu] = useState(false);
-  const [newWinText, setNewWinText] = useState('');
 
   const getTodayStr = () => new Date().toISOString().split('T')[0];
 
